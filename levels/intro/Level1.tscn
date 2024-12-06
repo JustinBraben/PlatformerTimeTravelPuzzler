@@ -1,29 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3fa4lqrui7ew"]
+[gd_scene load_steps=6 format=4 uid="uid://b3fa4lqrui7ew"]
 
 [ext_resource type="Script" path="res://levels/base_level.gd" id="1_07vxu"]
-[ext_resource type="PackedScene" uid="uid://c20lwv42r1mwi" path="res://tiles/block.tscn" id="1_saybu"]
 [ext_resource type="PackedScene" uid="uid://lfrg5u0s82ev" path="res://levels/kill_zone.tscn" id="3_kut6l"]
 [ext_resource type="PackedScene" uid="uid://wt0gmvoqrp4g" path="res://entities/goal/goal.tscn" id="4_81yk4"]
 [ext_resource type="PackedScene" uid="uid://bp1kdqo8y8k17" path="res://entities/stopwatch/stopwatch.tscn" id="5_mkrro"]
+[ext_resource type="PackedScene" uid="uid://bqivcejot0rn1" path="res://tiles/tile_map_layer.tscn" id="6_btpaf"]
 
 [node name="Level1" type="CanvasLayer"]
 script = ExtResource("1_07vxu")
 level_name = "1"
 
-[node name="Block" parent="." instance=ExtResource("1_saybu")]
-position = Vector2(100, 548)
-
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(102, 362)
-
-[node name="Block2" parent="." instance=ExtResource("1_saybu")]
-position = Vector2(352, 548)
-
-[node name="Block3" parent="." instance=ExtResource("1_saybu")]
-position = Vector2(612, 548)
-
-[node name="Block4" parent="." instance=ExtResource("1_saybu")]
-position = Vector2(844, 548)
 
 [node name="KillZone" parent="." instance=ExtResource("3_kut6l")]
 position = Vector2(475, 756)
@@ -33,6 +21,9 @@ position = Vector2(873, 319)
 level_name = "1"
 
 [node name="Stopwatch" parent="." instance=ExtResource("5_mkrro")]
+
+[node name="TileMapLayer" parent="." instance=ExtResource("6_btpaf")]
+tile_map_data = PackedByteArray("AAAAAA4AAQAAAAAAAAABAA4AAQAAAAAAAAACAA4AAQAAAAAAAAADAA4AAQAAAAAAAAAEAA4AAQAAAAAAAAAFAA4AAQAAAAAAAAAIAA4AAQAAAAAAAAAJAA4AAQAAAAAAAAAKAA4AAQAAAAAAAAALAA4AAQAAAAAAAAAMAA4AAQAAAAAAAAANAA4AAQAAAAAAAAAQAA4AAQAAAAAAAAARAA4AAQAAAAAAAAASAA4AAQAAAAAAAAATAA4AAQAAAAAAAAAUAA4AAQAAAAAAAAAVAA4AAQAAAAAAAAA=")
 
 [connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]
 [connection signal="timeout" from="Stopwatch" to="." method="_on_stopwatch_timeout"]

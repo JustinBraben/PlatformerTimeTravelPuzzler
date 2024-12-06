@@ -11,11 +11,8 @@ var scenes: Array[PackedScene] = [
 var scene_index: int = 0
 
 func _ready() -> void:
-	if (current_level != null):
-		current_level.connect("restart_level", handle_restart_level)
-		current_level.kill_zone.connect("killed", handle_restart_level)
-		current_level.goal.connect("player_reached_goal", handle_level_changed)
-		current_level_file_path = current_level.scene_file_path
+	setup_level_connections(current_level)
+	current_level_file_path = current_level.scene_file_path
 
 func handle_level_changed(current_level_name: String) -> void:
 	print("level should change! ", current_level_name)
@@ -36,14 +33,17 @@ func start_next_level(current_level_name: String) -> void:
 	
 	var next_level = load("res://levels/intro/Level" + next_level_name + ".tscn").instantiate()
 	add_child(next_level)
-	next_level.connect("restart_level", handle_restart_level)
-	next_level.kill_zone.connect("killed", handle_restart_level)
-	next_level.goal.connect("player_reached_goal", handle_level_changed)
+	setup_level_connections(next_level)
 	current_level.queue_free()
 	current_level = next_level
 	current_level_file_path = next_level.scene_file_path
 	
 	print("current level file path: ", current_level_file_path)
+
+func setup_level_connections(level: Node) -> void:
+	level.connect("restart_level", handle_restart_level)
+	level.kill_zone.connect("killed", handle_restart_level)
+	level.goal.connect("player_reached_goal", handle_level_changed)
 
 func handle_restart_level() -> void:
 	print("level should restart! ", current_level_file_path)
@@ -53,9 +53,7 @@ func handle_restart_level() -> void:
 func restart_current_level() -> void:
 	var next_level = load(current_level_file_path).instantiate()
 	add_child(next_level)
-	next_level.connect("restart_level", handle_restart_level)
-	next_level.kill_zone.connect("killed", handle_restart_level)
-	next_level.goal.connect("player_reached_goal", handle_level_changed)
+	setup_level_connections(next_level)
 	current_level.queue_free()
 	current_level = next_level
 	current_level_file_path = next_level.scene_file_path
