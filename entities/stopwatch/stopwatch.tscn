@@ -5,6 +5,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8wibl"]
 shader = ExtResource("1_fxyl2")
 shader_parameter/time_remaining = 60.0
+shader_parameter/rewind_duration = 3.0
 
 [node name="Stopwatch" type="Timer"]
 wait_time = 0.1

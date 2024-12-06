@@ -68,10 +68,10 @@ func compute_rewind(delta: float) -> void:
 	var pos = rewind_values["position"].pop_back()
 	if rewind_values["position"].is_empty():
 		if parent != null:
+			end_rewind()
 			parent.global_position = pos
 			# parent.velocity = rewind_values["velocity"][0]
 			parent.velocity = Vector2(0, 0)
-			end_rewind()
 			return
 	
 	parent.global_position = pos

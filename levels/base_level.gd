@@ -57,7 +57,21 @@ func handle_rewind_ended() -> void:
 	rewinding = false;
 
 func _on_stopwatch_timeout() -> void:
+	update_time_remaining()
+	update_rewind_remaining()
+	#var rewind_remaining = stopwatch.get_node("Shader").material.get_shader_parameter("rewind_duration")
+	#if (rewinding):
+		#rewind_remaining -= $Stopwatch.wait_time
+	#elif (!rewinding):
+		#if (rewind_remaining < 3.0):
+			#rewind_remaining += $Stopwatch.wait_time
+			#rewind_remaining = clamp(rewind_remaining, 0.0, 3.0)
+			
+	#stopwatch.get_node("Shader").material.set_shader_parameter("rewind_duration", rewind_remaining)
+
+func update_time_remaining() -> void:
 	var time_remaining = stopwatch.get_node("Shader").material.get_shader_parameter("time_remaining")
+	
 	if (rewinding):
 		time_remaining += $Stopwatch.wait_time
 	elif (!rewinding):
@@ -69,3 +83,13 @@ func _on_stopwatch_timeout() -> void:
 		$Stopwatch.start()
 	else:
 		emit_signal("time_expired")
+
+func update_rewind_remaining() -> void:
+	var rewind_remaining = stopwatch.get_node("Shader").material.get_shader_parameter("rewind_duration")
+	if (rewinding):
+		rewind_remaining -= $Stopwatch.wait_time
+	elif (!rewinding):
+		rewind_remaining += $Stopwatch.wait_time
+		rewind_remaining = clamp(rewind_remaining, 0.0, 3.0)
+			
+	stopwatch.get_node("Shader").material.set_shader_parameter("rewind_duration", rewind_remaining)
