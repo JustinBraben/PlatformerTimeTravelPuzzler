@@ -43,3 +43,8 @@ func move(delta: float) -> void:
 		velocity.x = lerp(velocity.x, direction * speed, accel * delta)
 	else:
 		velocity.x = lerp(velocity.x, 0.0, friction * delta)
+	
+	if velocity.x > 0:
+		$Sprite2D.flip_h = false
+	elif velocity.x < 0:
+		$Sprite2D.flip_h = true

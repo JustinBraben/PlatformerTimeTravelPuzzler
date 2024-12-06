@@ -1,19 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfn0sfx0i1bps"]
+[gd_scene load_steps=8 format=3 uid="uid://cfn0sfx0i1bps"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_peley"]
 [ext_resource type="PackedScene" uid="uid://7wiiuboym46w" path="res://entities/components/rewind_component.tscn" id="2_05jeh"]
+[ext_resource type="Texture2D" uid="uid://bmvqs056lnbcs" path="res://entities/player/player_v2.png" id="2_eax7s"]
+[ext_resource type="Shader" path="res://entities/player/player.gdshader" id="4_0nnwp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8vvt"]
+atlas = ExtResource("2_eax7s")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iiwla"]
-size = Vector2(48, 96)
+size = Vector2(32, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jftpp"]
+shader = ExtResource("4_0nnwp")
+shader_parameter/rewinding = false
+shader_parameter/transparency = 0.25
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_peley")
 TYPE = "PLAYER"
+sprite = SubResource("AtlasTexture_e8vvt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_iiwla")
 debug_color = Color(0.822919, 0.399317, 0.0580588, 0.42)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="RewindComponent" parent="." instance=ExtResource("2_05jeh")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_jftpp")
+texture = ExtResource("2_eax7s")

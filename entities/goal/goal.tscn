@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://wt0gmvoqrp4g"]
+[gd_scene load_steps=5 format=3 uid="uid://wt0gmvoqrp4g"]
 
 [ext_resource type="Script" path="res://entities/goal/goal.gd" id="1_cccid"]
+[ext_resource type="Texture2D" uid="uid://cnx7nbvipqqm5" path="res://entities/goal/goal_v1.png" id="2_ec1ld"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1p75h"]
-size = Vector2(240, 240)
+size = Vector2(96, 96)
+
+[sub_resource type="Theme" id="Theme_umf8f"]
+default_font_size = 20
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
 
 [node name="Goal" type="Area2D"]
 script = ExtResource("1_cccid")
@@ -11,6 +17,9 @@ script = ExtResource("1_cccid")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1p75h")
 debug_color = Color(0.192157, 0.752941, 0, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ec1ld")
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 8
@@ -24,6 +33,7 @@ offset_right = 22.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_umf8f")
 text = "GOAL"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

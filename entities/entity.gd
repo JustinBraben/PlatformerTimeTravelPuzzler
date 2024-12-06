@@ -7,6 +7,7 @@ class_name Entity
 @export var speed: float = 300.0
 @export var accel: float = 10.0
 @export var friction: float = 10.0
+@export var sprite: AtlasTexture
 
 # MOVEMENT
 @export var direction: Vector2 = Vector2(0,0)

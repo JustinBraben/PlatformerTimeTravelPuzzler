@@ -17,7 +17,7 @@ position = Vector2(102, 362)
 position = Vector2(475, 756)
 
 [node name="Goal" parent="." instance=ExtResource("4_81yk4")]
-position = Vector2(873, 319)
+position = Vector2(730, 382)
 level_name = "1"
 
 [node name="Stopwatch" parent="." instance=ExtResource("5_mkrro")]

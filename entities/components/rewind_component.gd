@@ -83,10 +83,12 @@ func start_rewind() -> void:
 	
 	rewinding = true
 	parent.get_node("CollisionShape2D").set_deferred("disabled", true)
+	parent.get_node("Sprite2D").material.set_shader_parameter("rewinding", true)
 	emit_signal("rewind_started")
 
 func end_rewind() -> void:
 	parent.get_node("CollisionShape2D").set_deferred("disabled", false)
+	parent.get_node("Sprite2D").material.set_shader_parameter("rewinding", false)
 	rewinding = false
 	emit_signal("rewind_stopped")
 
