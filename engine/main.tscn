@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://da7v0dxa37wl2"]
+
+[ext_resource type="PackedScene" uid="uid://cfarbebltglf" path="res://engine/SceneManager.tscn" id="1_pcl0l"]
+[ext_resource type="Script" path="res://engine/main.gd" id="1_qg2at"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_qg2at")
+
+[node name="SceneManager" parent="." instance=ExtResource("1_pcl0l")]

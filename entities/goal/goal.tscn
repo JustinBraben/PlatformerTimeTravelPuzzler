@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://wt0gmvoqrp4g"]
+
+[ext_resource type="Script" path="res://entities/goal/goal.gd" id="1_cccid"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1p75h"]
+size = Vector2(240, 240)
+
+[node name="Goal" type="Area2D"]
+script = ExtResource("1_cccid")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1p75h")
+debug_color = Color(0.192157, 0.752941, 0, 0.419608)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -11.5
+offset_right = 22.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GOAL"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

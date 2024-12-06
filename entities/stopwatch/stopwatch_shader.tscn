@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6o4r24vklvhs"]
+
+[ext_resource type="Shader" path="res://tiles/stopwatch_shader.gdshader" id="1_rdaji"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lfa2j"]
+shader = ExtResource("1_rdaji")
+shader_parameter/time_remaining = 60.0
+
+[node name="StopwatchTimer" type="Timer"]
+wait_time = 0.1
+
+[node name="StopwatchShader" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_lfa2j")
+offset_right = 192.0
+offset_bottom = 192.0

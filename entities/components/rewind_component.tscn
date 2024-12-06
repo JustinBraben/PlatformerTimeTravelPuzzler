@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://7wiiuboym46w"]
+
+[ext_resource type="Script" path="res://entities/components/rewind_component.gd" id="1_nei2w"]
+
+[node name="RewindComponent" type="Node2D"]
+script = ExtResource("1_nei2w")

@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2rd5llinrat5"]
+
+[ext_resource type="PackedScene" uid="uid://c20lwv42r1mwi" path="res://tiles/block.tscn" id="1_16n0j"]
+[ext_resource type="Script" path="res://levels/base_level.gd" id="1_ee8wd"]
+[ext_resource type="PackedScene" uid="uid://lfrg5u0s82ev" path="res://levels/kill_zone.tscn" id="3_bpgdh"]
+[ext_resource type="PackedScene" uid="uid://wt0gmvoqrp4g" path="res://entities/goal/goal.tscn" id="4_pwh1q"]
+[ext_resource type="PackedScene" uid="uid://bp1kdqo8y8k17" path="res://entities/stopwatch/stopwatch.tscn" id="5_5d4yq"]
+
+[node name="Level2" type="CanvasLayer"]
+script = ExtResource("1_ee8wd")
+level_name = "2"
+
+[node name="Block" parent="." instance=ExtResource("1_16n0j")]
+position = Vector2(104, 542)
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(46, 241)
+
+[node name="Block2" parent="." instance=ExtResource("1_16n0j")]
+position = Vector2(320, 487)
+
+[node name="Block3" parent="." instance=ExtResource("1_16n0j")]
+position = Vector2(550, 430)
+
+[node name="KillZone" parent="." instance=ExtResource("3_bpgdh")]
+position = Vector2(475, 756)
+
+[node name="Goal" parent="." instance=ExtResource("4_pwh1q")]
+position = Vector2(605, 208)
+level_name = "2"
+
+[node name="Stopwatch" parent="." instance=ExtResource("5_5d4yq")]
+
+[connection signal="timeout" from="Stopwatch" to="." method="_on_stopwatch_timeout"]

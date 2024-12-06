@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp1kdqo8y8k17"]
+
+[ext_resource type="Shader" path="res://tiles/stopwatch_shader.gdshader" id="1_fxyl2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8wibl"]
+shader = ExtResource("1_fxyl2")
+shader_parameter/time_remaining = 60.0
+
+[node name="Stopwatch" type="Timer"]
+wait_time = 0.1
+
+[node name="Shader" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_8wibl")
+offset_right = 192.0
+offset_bottom = 192.0
