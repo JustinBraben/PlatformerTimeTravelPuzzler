@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=4 uid="uid://cfa3grdyt6yh8"]
+
+[ext_resource type="Script" path="res://levels/base_level.gd" id="1_s1mpo"]
+[ext_resource type="PackedScene" uid="uid://lfrg5u0s82ev" path="res://levels/kill_zone.tscn" id="2_ai4sr"]
+[ext_resource type="PackedScene" uid="uid://wt0gmvoqrp4g" path="res://entities/goal/goal.tscn" id="3_trst1"]
+[ext_resource type="PackedScene" uid="uid://bp1kdqo8y8k17" path="res://entities/stopwatch/stopwatch.tscn" id="4_x6wl3"]
+[ext_resource type="PackedScene" uid="uid://bqivcejot0rn1" path="res://tiles/tile_map_layer.tscn" id="5_1m140"]
+[ext_resource type="PackedScene" uid="uid://g7iyaccmg2t7" path="res://entities/obstacles/falling_obstacle.tscn" id="6_ilyuh"]
+
+[node name="Level4" type="CanvasLayer"]
+script = ExtResource("1_s1mpo")
+level_name = "4"
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(135, 446)
+
+[node name="KillZone" parent="." instance=ExtResource("2_ai4sr")]
+position = Vector2(422, 769)
+
+[node name="Goal" parent="." instance=ExtResource("3_trst1")]
+position = Vector2(1071, 101)
+level_name = "4"
+
+[node name="Stopwatch" parent="." instance=ExtResource("4_x6wl3")]
+
+[node name="TileMapLayer" parent="." instance=ExtResource("5_1m140")]
+tile_map_data = PackedByteArray("AAAAABIAAQAAAAAAAAABABIAAQAAAAAAAAACABIAAQAAAAAAAAADABIAAQAAAAAAAAAEABIAAQAAAAAAAAAFABIAAQAAAAAAAAAGABIAAQAAAAAAAAAHABIAAQAAAAAAAAAIABIAAQAAAAAAAAAJABIAAQAAAAAAAAAKABIAAQAAAAAAAAALABIAAQAAAAAAAAAjAAUAAQAAAAAAAAAiAAUAAQAAAAAAAAAhAAUAAQAAAAAAAAAgAAUAAQAAAAAAAAAfAAUAAQAAAAAAAAAeAAUAAQAAAAAAAAAdAAUAAQAAAAAAAAAcAAUAAQAAAAAAAAAbAAUAAQAAAAAAAAAaAAUAAQAAAAAAAAAZAAUAAQAAAAAAAAAMABIAAQAAAAAAAAAMABEAAQAAAAAAAAAMABAAAQAAAAAAAAAYABAAAQAAAAAAAAAYABEAAQAAAAAAAAAYABIAAQAAAAAAAAAZABIAAQAAAAAAAAAaABIAAQAAAAAAAAAbABIAAQAAAAAAAAAcABIAAQAAAAAAAAAdABIAAQAAAAAAAAAeABIAAQAAAAAAAAAfABIAAQAAAAAAAAAgABIAAQAAAAAAAAAhABIAAQAAAAAAAAAiABIAAQAAAAAAAAAjABIAAQAAAAAAAAANABIAAQAAAAAAAAAOABIAAQAAAAAAAAAPABIAAQAAAAAAAAAQABIAAQAAAAAAAAARABIAAQAAAAAAAAASABIAAQAAAAAAAAATABIAAQAAAAAAAAAUABIAAQAAAAAAAAAVABIAAQAAAAAAAAAWABIAAQAAAAAAAAAXABIAAQAAAAAAAAALABEAAQAAAAAAAAAMAA8AAQAAAAAAAAANABEAAQAAAAAAAAANABAAAQAAAAAAAAANAA8AAQAAAAAAAAANAA4AAQAAAAAAAAALABAAAQAAAAAAAAAKABEAAQAAAAAAAAAYAA8AAQAAAAAAAAAYAA4AAQAAAAAAAAAZAA8AAQAAAAAAAAAZABAAAQAAAAAAAAAaABAAAQAAAAAAAAAaABEAAQAAAAAAAAAbABEAAQAAAAAAAAAZABEAAQAAAAAAAAA=")
+
+[node name="FallingObstacle" parent="." instance=ExtResource("6_ilyuh")]
+position = Vector2(610, 202)
+
+[connection signal="timeout" from="Stopwatch" to="." method="_on_stopwatch_timeout"]

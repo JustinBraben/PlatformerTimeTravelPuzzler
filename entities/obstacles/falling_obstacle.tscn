@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://g7iyaccmg2t7"]
+
+[ext_resource type="Script" path="res://entities/obstacles/falling_obstacle.gd" id="1_0ywyo"]
+[ext_resource type="Shader" path="res://entities/obstacles/falling_obstacle.gdshader" id="1_otqii"]
+[ext_resource type="PackedScene" uid="uid://7wiiuboym46w" path="res://entities/components/rewind_component.tscn" id="3_qeeci"]
+[ext_resource type="Texture2D" uid="uid://cyfs51nr4n3w" path="res://icon.svg" id="4_wco6i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_61vk5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34uko"]
+size = Vector2(128, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wa1iq"]
+shader = ExtResource("1_otqii")
+shader_parameter/rewinding = false
+shader_parameter/transparency = 0.25
+
+[node name="FallingObstacle" type="CharacterBody2D" node_paths=PackedStringArray("rewind_component")]
+material = SubResource("ShaderMaterial_61vk5")
+script = ExtResource("1_0ywyo")
+rewind_component = NodePath("RewindComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_34uko")
+debug_color = Color(0.667266, 0.327884, 0.974481, 0.42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="RewindComponent" parent="." instance=ExtResource("3_qeeci")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_wa1iq")
+texture = ExtResource("4_wco6i")
+region_rect = Rect2(0, 0, 288, 288)

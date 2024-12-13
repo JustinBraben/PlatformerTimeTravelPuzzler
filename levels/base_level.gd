@@ -43,8 +43,9 @@ func spawn_player() -> void:
 	var new_player = player_scene.instantiate()
 	new_player.position = player_spawn.position
 	new_player.add_to_group("player")
-	new_player.get_node("RewindComponent").connect("rewind_started", handle_rewind_started)
-	new_player.get_node("RewindComponent").connect("rewind_stopped", handle_rewind_ended)
+	if (new_player.get_node_or_null("RewindComponent") != null):
+		new_player.get_node("RewindComponent").connect("rewind_started", handle_rewind_started)
+		new_player.get_node("RewindComponent").connect("rewind_stopped", handle_rewind_ended)
 	add_child(new_player)
 
 func handle_rewind_started() -> void:

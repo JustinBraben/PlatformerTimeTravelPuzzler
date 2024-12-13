@@ -82,7 +82,7 @@ func start_rewind() -> void:
 		return
 	
 	rewinding = true
-	parent.get_node("CollisionShape2D").set_deferred("disabled", true)
+	#parent.get_node("CollisionShape2D").set_deferred("disabled", true)
 	parent.get_node("Sprite2D").material.set_shader_parameter("rewinding", true)
 	emit_signal("rewind_started")
 

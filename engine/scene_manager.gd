@@ -7,6 +7,8 @@ var scenes: Array[PackedScene] = [
 	preload("res://levels/intro/Level1.tscn"), 
 	preload("res://levels/intro/Level2.tscn"), 
 	preload("res://levels/intro/Level3.tscn"), 
+	preload("res://levels/intro/Level4.tscn"), 
+	preload("res://levels/intro/Level5.tscn"), 
 	]
 var scene_index: int = 0
 
@@ -27,6 +29,10 @@ func start_next_level(current_level_name: String) -> void:
 		"2":
 			next_level_name = "3"
 		"3":
+			next_level_name = "4"
+		"4":
+			next_level_name = "5"
+		"5":
 			next_level_name = "1"
 		_:
 			print("Dont recognize this level...")

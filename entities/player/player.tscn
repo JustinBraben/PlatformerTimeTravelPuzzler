@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfn0sfx0i1bps"]
+[gd_scene load_steps=7 format=3 uid="uid://cfn0sfx0i1bps"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_peley"]
-[ext_resource type="PackedScene" uid="uid://7wiiuboym46w" path="res://entities/components/rewind_component.tscn" id="2_05jeh"]
 [ext_resource type="Texture2D" uid="uid://bmvqs056lnbcs" path="res://entities/player/player_v2.png" id="2_eax7s"]
 [ext_resource type="Shader" path="res://entities/player/player.gdshader" id="4_0nnwp"]
 
@@ -27,8 +26,6 @@ shape = SubResource("RectangleShape2D_iiwla")
 debug_color = Color(0.822919, 0.399317, 0.0580588, 0.42)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-[node name="RewindComponent" parent="." instance=ExtResource("2_05jeh")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_jftpp")
