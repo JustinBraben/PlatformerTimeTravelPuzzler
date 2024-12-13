@@ -1,14 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfn0sfx0i1bps"]
+[gd_scene load_steps=8 format=3 uid="uid://cfn0sfx0i1bps"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_peley"]
-[ext_resource type="Texture2D" uid="uid://bmvqs056lnbcs" path="res://entities/player/player_v2.png" id="2_eax7s"]
+[ext_resource type="Texture2D" uid="uid://d3dwjosrlf1ms" path="res://entities/player/player_v3.png" id="2_776gd"]
 [ext_resource type="Shader" path="res://entities/player/player.gdshader" id="4_0nnwp"]
+[ext_resource type="Texture2D" uid="uid://cvmjeaf5eohr3" path="res://entities/player/player_v4.png" id="4_a4221"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e8vvt"]
-atlas = ExtResource("2_eax7s")
+atlas = ExtResource("2_776gd")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iiwla"]
-size = Vector2(32, 32)
+size = Vector2(48, 64)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jftpp"]
 shader = ExtResource("4_0nnwp")
@@ -29,4 +30,4 @@ debug_color = Color(0.822919, 0.399317, 0.0580588, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_jftpp")
-texture = ExtResource("2_eax7s")
+texture = ExtResource("4_a4221")
