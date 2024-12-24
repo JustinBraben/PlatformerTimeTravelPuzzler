@@ -1,7 +1,10 @@
 extends Node
 
+var next_level = null
+
 @onready var current_level := $Level1
 @onready var current_level_file_path: String
+@onready var anim := $AnimationPlayer
 
 var scenes: Array[PackedScene] = [
 	preload("res://levels/intro/Level1.tscn"), 
@@ -37,12 +40,9 @@ func start_next_level(current_level_name: String) -> void:
 		_:
 			print("Dont recognize this level...")
 	
-	var next_level = load("res://levels/intro/Level" + next_level_name + ".tscn").instantiate()
-	add_child(next_level)
-	setup_level_connections(next_level)
-	current_level.queue_free()
-	current_level = next_level
-	current_level_file_path = next_level.scene_file_path
+	next_level = load("res://levels/intro/Level" + next_level_name + ".tscn").instantiate()
+	next_level.layer = -1
+	anim.play("fade_in")
 	
 	print("current level file path: ", current_level_file_path)
 
@@ -63,3 +63,17 @@ func restart_current_level() -> void:
 	current_level.queue_free()
 	current_level = next_level
 	current_level_file_path = next_level.scene_file_path
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	match anim_name:
+		"fade_in":
+			current_level.queue_free()
+			current_level = next_level
+			current_level_file_path = current_level.scene_file_path
+			current_level.layer = 1
+			next_level = null
+			anim.play("fade_out")
+			add_child(current_level)
+		"fade_out":
+			setup_level_connections(current_level)
