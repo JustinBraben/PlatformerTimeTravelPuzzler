@@ -36,6 +36,8 @@ func start_next_level(current_level_name: String) -> void:
 		"4":
 			next_level_name = "5"
 		"5":
+			next_level_name = "6"
+		"6":
 			next_level_name = "1"
 		_:
 			print("Dont recognize this level...")
