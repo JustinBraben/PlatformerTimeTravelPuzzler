@@ -5,6 +5,8 @@ var next_level = null
 @onready var current_level := $Level1
 @onready var current_level_file_path: String
 @onready var anim := $AnimationPlayer
+@onready var controls := $Controls
+@onready var show_controls: bool = true
 
 var scenes: Array[PackedScene] = [
 	preload("res://levels/intro/Level1.tscn"), 
@@ -18,6 +20,15 @@ var scene_index: int = 0
 func _ready() -> void:
 	setup_level_connections(current_level)
 	current_level_file_path = current_level.scene_file_path
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_released("toggle_controls"):
+		show_controls = !show_controls
+		print("show_controls: ", show_controls)
+		if (show_controls):
+			controls.visible = true
+		if !show_controls:
+			controls.visible = false
 
 func handle_level_changed(current_level_name: String) -> void:
 	print("level should change! ", current_level_name)
