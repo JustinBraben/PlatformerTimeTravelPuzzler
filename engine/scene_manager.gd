@@ -9,11 +9,11 @@ var next_level = null
 @onready var show_controls: bool = true
 
 var scenes: Array[PackedScene] = [
-	preload("res://levels/intro/Level1.tscn"), 
-	preload("res://levels/intro/Level2.tscn"), 
-	preload("res://levels/intro/Level3.tscn"), 
-	preload("res://levels/intro/Level4.tscn"), 
-	preload("res://levels/intro/Level5.tscn"), 
+	preload("res://levels/intro/Level1.tscn"),
+	preload("res://levels/intro/Level2.tscn"),
+	preload("res://levels/intro/Level3.tscn"),
+	preload("res://levels/intro/Level4.tscn"),
+	preload("res://levels/intro/Level5.tscn"),
 	]
 var scene_index: int = 0
 
